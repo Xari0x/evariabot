@@ -1,0 +1,10 @@
+{
+  "name": "EvariaBOT",
+  "version": "1.0.0",
+  "description": "By Xari0x",
+  "main": "index.js",
+  "author": "Xari0x",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
