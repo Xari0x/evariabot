@@ -38,10 +38,10 @@ client.on('message', msg => {
     if (command === "help"){
         var help_msg = new Discord.RichEmbed()
             .setColor('#e74c3c')
-            .addField("General Commands", "`!help | Show all commands.`\n`!info | Show informations about the server.`")
-            .addField("Developer Commands", "`The developer commands are secrets ... You're not worthy.`")
+            .addField("General Commands", "`> !help | Show all commands.`\n`> !info | Show informations about the server.`\n`> !about | Show informations about me.`\n`!changelog | Show last changelog !`")
+            .addField("Developer Commands", "`> The developer commands are secrets ... You're not worthy.`")
             .setTimestamp()
-            .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+            .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
         msg.channel.send(help_msg)
     };
 
@@ -53,9 +53,9 @@ client.on('message', msg => {
         } else {
             var permission_msg = new Discord.RichEmbed()
                 .setColor('#e74c3c')
-                .addField("You need to be a developer !", "`You don't have the permission to do that !`")
+                .addField("You need to be a developer !", "`> You don't have the permission to do that !`")
                 .setTimestamp()
-                .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+                .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
             msg.channel.send(permission_msg)
         }
     };
@@ -68,9 +68,9 @@ client.on('message', msg => {
         } else {
             var permission_msg = new Discord.RichEmbed()
                 .setColor('#e74c3c')
-                .addField("You need to be a developer !", "`You don't have the permission to do that !`")
+                .addField("You need to be a developer !", "`> You don't have the permission to do that !`")
                 .setTimestamp()
-                .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+                .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
             msg.channel.send(permission_msg)
         }
     }
@@ -78,21 +78,36 @@ client.on('message', msg => {
     if (command === "info"){
         var info_msg = new Discord.RichEmbed()
             .setColor('#e74c3c')
-            .addField("Informations about the server.", "`Name :`" + ` ${msg.guild.name}` + "\n`Date of creation :`" + ` ${msg.guild.createdAt}` + "\n`You joined the :`" + ` ${msg.member.joinedAt}` + "\n`Number of member :`" + ` ${msg.guild.memberCount}`)
+            .setTitle('Informations about the server.')
+            .addField("The name of the server is :", "`> " + msg.guild.name + "`")
+            .addField("The server was created the :", "`> " + msg.guild.createdAt + "`")
+            .addField("You joined the :", "`> " + msg.member.joinedAt + "`")
+            .addField("There are :", "`> " + msg.guild.memberCount + " members`")
             .setTimestamp()
-            .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+            .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
         msg.channel.send(info_msg)
     }
-    
+
     if (command === "about"){
-        var info_msg = new Discord.RichEmbed()
+        var about_msg = new Discord.RichEmbed()
             .setColor('#e74c3c')
             .setTitle('Informations about me, the bot.')
-            .addField("Who I am ?", "`My name is EvariaBOT and I was developped the 30.04.19 by Xari0x#7387 !`")
-            .addField("What can I do ?", "`Type !help in any channel for have more informations about my usefulness !`")
-            .addField("How can I come on your server ?", "`I am not a public bot, only a few people have access to my data !`")
+            .addField("Who I am ?", "`> My name is EvariaBOT and I was developped the 30.04.19 by Xari0x#7387 !`")
+            .addField("What can I do ?", "`> Type !help in any channel for have more informations about my usefulness !`")
+            .addField("How can I come on your server ?", "`> I am not a public bot, only a few people have access to my data !`")
+            .addField("What is my version ?", "`> From what I know, it seems to me that I am in 1.0.1 !`")
             .setTimestamp()
-            .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
-        msg.channel.send(info_msg)
+            .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+        msg.channel.send(about_msg)
+    }
+
+    if (command === "changelog"){
+        var changelog_msg = new Discord.RichEmbed()
+            .setColor('#e74c3c')
+            .setTitle('Changelog 1.0.1 - EvariaBOT')
+            .addField("30.04.19", "`> Creation of the bot !`\n`> Some new features come soon ...`")
+            .setTimestamp()
+            .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+        msg.channel.send(changelog_msg)
     }
 })
