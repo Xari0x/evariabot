@@ -1,7 +1,10 @@
 const Discord = require('discord.js')
+const MySQL = require('mysql')
 
 var client = new Discord.Client();
 var prefix = "!"
+
+// Connection to the client.
 
 client.login(process.env.TOKEN)
 
@@ -11,6 +14,22 @@ client.on('ready', () => {
     client.user.setStatus('dnd')
 });
 
+// Connection to the database MySQL.
+
+const connection = MySQL.createConnection({
+    host     : process.env.DBHOST,
+    user     : process.env.DBUSER,
+    port     : "3306",
+    password : process.env.DBPASSWORD,
+    database : process.env.DBNAME
+});
+
+connection.connect(err => {
+    console.log(`> Connected to the database !`);
+});
+
+// Commands.
+
 client.on('message', msg => {
     if (!msg.content.startsWith(prefix)) return;
     const args = msg.content.slice(prefix.length).split(/ +/);
@@ -19,7 +38,8 @@ client.on('message', msg => {
     if (command === "help"){
         var help_msg = new Discord.RichEmbed()
             .setColor('#e74c3c')
-            .addField("General", "`?help | Affiche toutes les commandes.`")
+            .addField("General Commands", "`!help | Show all commands.`\n`!info | Show informations about the server.`")
+            .addField("Developer Commands", "`!offline/online | Change the bot status.`")
             .setTimestamp()
             .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
         msg.channel.send(help_msg)
@@ -53,5 +73,14 @@ client.on('message', msg => {
                 .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
             msg.channel.send(permission_msg)
         }
+    }
+
+    if (command === "info"){
+        var info_msg = new Discord.RichEmbed()
+            .setColor('#e74c3c')
+            .addField("Informations about the server.", "`Name :`" + ` ${msg.guild.name}` + "\n`Date of creation :`" + ` ${msg.guild.createdAt}` + "\n`You joined the :`" + ` ${msg.member.joinedAt}` + "\n`Number of member :`" + ` ${msg.guild.memberCount}`)
+            .setTimestamp()
+            .setFooter("Par Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+        msg.channel.send(info_msg)
     }
 })
