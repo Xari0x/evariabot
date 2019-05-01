@@ -38,7 +38,7 @@ client.on('message', msg => {
     if (command === "help"){
         var help_msg = new Discord.RichEmbed()
             .setColor('#e74c3c')
-            .addField("General Commands", "`> !help | Show all commands.`\n`> !info | Show informations about the server.`\n`> !about | Show informations about me.`\n`!changelog | Show last changelog !`")
+            .addField("General Commands", "`> !help | Show all commands.`\n`> !info | Show informations about the server.`\n`> !about | Show informations about me.`\n`> !changelog | Show last changelog !`")
             .addField("Developer Commands", "`> The developer commands are secrets ... You're not worthy.`")
             .setTimestamp()
             .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
