@@ -10,8 +10,8 @@ client.login(process.env.TOKEN)
 
 client.on('ready', () => {
     console.log(`> Discord bot offline ! (${client.user.tag})`);
-    client.user.setActivity(`Offline ! | !help`, )
-    client.user.setStatus('dnd')
+    client.user.setActivity(`Online ! | !help`)
+    client.user.setStatus('online')
 });
 
 // Connection to the database MySQL.
