@@ -74,6 +74,26 @@ client.on('message', msg => {
             msg.channel.send(permission_msg)
         }
     }
+    
+    if (command === "stream"){
+        if (msg.guild.member(msg.author).id === "282147518958272512"){
+            msg.channel.sendMessage("@Notifications" + args[0])
+            var stream_msg = new Discord.RichEmbed()
+                .setColor('#e74c3c')
+                .addField("Xari0x now streaming on Youtube !", "`> You don't have the permission to do that !`")
+                .setImage('http://fondationalpha.000webhostapp.com/sqdsqdsqd.png')    
+                .setTimestamp()
+                .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+            msg.channel.send(stream_msg)
+        } else {
+            var permission_msg = new Discord.RichEmbed()
+                .setColor('#e74c3c')
+                .addField("You can't do that !", "`> You don't have the permission to do that !`")
+                .setTimestamp()
+                .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
+            msg.channel.send(permission_msg)
+        }
+    }
 
     if (command === "info"){
         var info_msg = new Discord.RichEmbed()
