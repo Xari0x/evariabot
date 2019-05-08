@@ -77,6 +77,7 @@ client.on('message', msg => {
     
     if (command === "stream"){
         if (msg.guild.member(msg.author).id === "282147518958272512"){
+            msg.delete()
             msg.channel.sendMessage("<@&559123255907057664>")
             var stream_msg = new Discord.RichEmbed()
                 .setColor('#e74c3c')
