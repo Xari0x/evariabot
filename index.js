@@ -77,10 +77,10 @@ client.on('message', msg => {
     
     if (command === "stream"){
         if (msg.guild.member(msg.author).id === "282147518958272512"){
-            msg.channel.sendMessage("@Notifications" + args[0])
+            msg.channel.sendMessage("@Notifications")
             var stream_msg = new Discord.RichEmbed()
                 .setColor('#e74c3c')
-                .addField("Xari0x now streaming on Youtube !", "`> You don't have the permission to do that !`")
+                .addField("Xari0x now streaming on Youtube !", args[0])
                 .setImage('http://fondationalpha.000webhostapp.com/sqdsqdsqd.png')    
                 .setTimestamp()
                 .setFooter("By Xari0x | " + msg.author.username, "http://fondationalpha.000webhostapp.com/logo.png")
